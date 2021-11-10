@@ -13,17 +13,11 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 public class ExampleOhosTest {
-    @Test
-    public void testBundleName() {
-        final String actualBundleName = AbilityDelegatorRegistry.getArguments().getTestBundleName();
-        assertEquals("me.zhouzhuo.zzhorizontalprogressbardemo", actualBundleName);
-    }
-
     private Context context;
     private AttrSet attrSet;
     private ZzHorizontalProgressBar progressBar;
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
 
         context = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext();
         attrSet = new AttrSet() {
@@ -47,28 +41,18 @@ public class ExampleOhosTest {
                 return Optional.empty();
             }
         };
-
-
-//        super.setUp();
     }
-
-//    @Test
-//    public void testShowMode() {
-//        String mode = "round";
-//        ZzHorizontalProgressBar progressBar = new ZzHorizontalProgressBar(context,attrSet);
-//        //ZzHorizontalProgressBar.changeParamToColor(0xFFFFFFF);
-//        //assertNotNull(ZzHorizontalProgressBar.changeParamToColor(Color.getIntColor("null")));
-//        assertNotNull(progressBar.getHandlezpbshowmode(mode));
-//    }
+    @Test
+    public void testBundleName() {
+        final String actualBundleName = AbilityDelegatorRegistry.getArguments().getTestBundleName();
+        assertEquals("me.zhouzhuo.zzhorizontalprogressbardemo", actualBundleName);
+    }
 
     @Test
     public void testMax() {
         progressBar = new ZzHorizontalProgressBar(context,attrSet);
-//        assertEquals("Max value",progressBar.setMax(100),progressBar.getMax());
-//        assertEquals(progressBar.setMax(100),progressBar.getMax());
         progressBar.setMax(100);
         assertEquals(100,progressBar.getMax());
-
     }
 
     @Test
@@ -83,7 +67,6 @@ public class ExampleOhosTest {
       progressBar = new ZzHorizontalProgressBar(context,attrSet);
       progressBar.setShowSecondProgress(true);
       assertEquals(true,progressBar.isShowSecondProgress());
-
     }
 
     @Test
@@ -91,7 +74,6 @@ public class ExampleOhosTest {
         progressBar = new ZzHorizontalProgressBar(context,attrSet);
         progressBar.setSecondProgress(15);
         assertEquals(15,progressBar.getSecondProgress());
-
     }
 
     @Test
@@ -99,7 +81,6 @@ public class ExampleOhosTest {
         progressBar = new ZzHorizontalProgressBar(context,attrSet);
         progressBar.setSecondProgressShape(0);
         assertEquals(0,progressBar.getSecondProgressShape());
-
     }
 
     @Test
@@ -149,11 +130,6 @@ public class ExampleOhosTest {
         progressBar = new ZzHorizontalProgressBar(context,attrSet);
         progressBar.setBorderColor(0xffff001f);
         assertEquals(0xffff001f,progressBar.getBorderColor());
-    }
-
-
-    public void tearDown() throws Exception {
-
     }
 
 }

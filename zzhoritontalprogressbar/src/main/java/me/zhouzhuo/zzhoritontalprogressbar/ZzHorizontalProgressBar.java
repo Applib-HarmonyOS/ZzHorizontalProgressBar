@@ -120,7 +120,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
     public ZzHorizontalProgressBar(Context context) {
         this(context, null);
-        init(context, null);
+        init( null);
 
     }
 
@@ -134,7 +134,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
     public ZzHorizontalProgressBar(Context context, AttrSet attrSet) {
         super(context, attrSet);
-        init(context, attrSet);
+        init( attrSet);
         addDrawTask(this);
 
     }
@@ -151,19 +151,17 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
     public ZzHorizontalProgressBar(Context context, AttrSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs);
+        init( attrs);
         addDrawTask(this);
     }
 
-    private void init(Context context, AttrSet attrs) {
-        initAttrs(context, attrs);
+    private void init( AttrSet attrs) {
+        initAttrs( attrs);
         initPaths();
-
-
 
     }
 
-    private void initAttrs(Context context, AttrSet attrs) {
+    private void initAttrs( AttrSet attrs) {
 
 
         mMax = AttrUtils.getIntFromAttr(attrs, "zpb_max", 100);
@@ -291,7 +289,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                     + progressHeight / 2.0f, mPadding), new Point(mPadding
                     + progressHeight / 2.0f + dx, mPadding + progressHeight)};
             Color[] color = ZzHorizontalProgressBar.changeParamToColors(colors);
-            TileMode tileMode = TileMode.MIRROR_TILEMODE;
             LinearShader shader = new LinearShader(
                     points,
                     positions,
@@ -375,7 +372,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                         + secondProgressHeight / 2.0f, mPadding), new Point(mPadding
                         + secondProgressHeight / 2.0f + secondDx, mPadding + secondProgressHeight)};
                 Color[] color = ZzHorizontalProgressBar.changeParamToColors(secondColors);
-                TileMode tileMode = TileMode.MIRROR_TILEMODE;
                 LinearShader secondShader = new LinearShader(
                         points,
                         secondPositions,
@@ -592,7 +588,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         if (mOpenGradient) {
             int[] colors = new int[2];
             float[] positions = new float[2];
-            //Point [] points = new Point[5];
             //from color
             colors[0] = mGradientFrom;
             positions[0] = 0;
@@ -604,7 +599,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
             Point[] points = {new Point(left, mPadding), new Point(left + dx, mPadding + progressHeight)};
             Color[] color = ZzHorizontalProgressBar.changeParamToColors(colors);
             TileMode tileMode = TileMode.MIRROR_TILEMODE;
-            //points={(2,2),(3,4)};
             LinearShader shader = new LinearShader(
                     points,
                     positions,

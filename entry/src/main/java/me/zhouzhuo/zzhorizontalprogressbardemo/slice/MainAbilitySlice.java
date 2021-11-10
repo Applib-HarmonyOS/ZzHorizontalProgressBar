@@ -74,7 +74,8 @@ public class MainAbilitySlice extends AbilitySlice {
                         pb5.setGradientColorAndBorderColor(0x7fb4ec51, 0x7f429321, 0xff85ff00);
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+
+                    System.out.println("null pointer exception");
                 }
             }
 
@@ -108,7 +109,7 @@ public class MainAbilitySlice extends AbilitySlice {
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("null pointer exception");
         }
 
 

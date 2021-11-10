@@ -23,6 +23,7 @@ import ohos.agp.components.element.Element;
  * AttrUtils class.
  */
 public class AttrUtils {
+    
     /**
      * Function to get int value from attribute.
      *

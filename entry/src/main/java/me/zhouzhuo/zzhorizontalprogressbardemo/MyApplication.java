@@ -19,6 +19,9 @@ package me.zhouzhuo.zzhorizontalprogressbardemo;
 
 import ohos.aafwk.ability.AbilityPackage;
 
+/**
+ * Myapplication.
+ */
 public class MyApplication extends AbilityPackage {
     @Override
     public void onInitialize() {
