@@ -16,7 +16,7 @@ Inspired by [zhouzhuo810/ZzHorizontalProgressBar](https://github.com/zhouzhuo810
 6. Support for the second-level progress bar.
 
 
-[progressbar_gif](https://github.com/vidyaakbar/ZzHorizontalProgressBar/blob/main/screenshots/zzhorizontalprogressbar.gif)
+![progressbar_gif](https://github.com/vidyaakbar/ZzHorizontalProgressBar/blob/main/screenshots/zzhorizontalprogressbar.gif)
 
 
 ## Dependency
