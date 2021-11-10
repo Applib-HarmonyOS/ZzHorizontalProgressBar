@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    >
+
+   <DirectionalLayout
+       xmlns:ohos="http://schemas.huawei.com/res/ohos"
+       xmlns:custom="http://schemas.huawei.com/res/custom"
+       ohos:height="match_parent"
+       ohos:width="match_parent"
+       ohos:id="$+id:activity_main"
+       ohos:orientation="vertical">
+
+      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+          ohos:height="60vp"
+          ohos:width="match_parent"
+          ohos:id="$+id:pb"
+          ohos:left_margin="20vp"
+          ohos:top_margin="20vp"
+          ohos:right_margin="20vp"
+          ohos:padding="20vp"
+          />
+
+
+      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+          ohos:id="$+id:pb1"
+          ohos:width="match_parent"
+          ohos:height="10vp"
+          ohos:left_margin="20vp"
+          ohos:top_margin="20vp"
+          ohos:right_margin="20vp"
+          custom:zpb_bg_color="#d8d8d8"
+          custom:zpb_gradient_from="#429321"
+          custom:zpb_gradient_to="#b4ec51"
+          custom:zpb_max="100"
+          custom:zpb_open_gradient="true"
+          custom:zpb_padding="1px"
+          custom:zpb_progress="0"
+          custom:zpb_second_pb_color="#f5a623"
+          custom:zpb_second_progress="0"
+          custom:zpb_show_second_point_shape="point"
+          custom:zpb_show_second_progress="true"
+
+          />
+
+      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+          ohos:id="$+id:pb2"
+          ohos:width="match_parent"
+          ohos:height="30vp"
+          ohos:left_margin="20vp"
+          ohos:top_margin="20vp"
+          ohos:right_margin="20vp"
+          custom:zpb_bg_color="#d8d8d8"
+          custom:zpb_gradient_from="#429321"
+          custom:zpb_gradient_to="#b4ec51"
+          custom:zpb_max="100"
+          custom:zpb_open_gradient="true"
+          custom:zpb_open_second_gradient="true"
+          custom:zpb_padding="1px"
+          custom:zpb_progress="0"
+          custom:zpb_second_gradient_from="#f76b1c"
+          custom:zpb_second_gradient_to="#fad961"
+          custom:zpb_second_pb_color="#f5a623"
+          custom:zpb_show_second_point_shape="line"
+          custom:zpb_show_second_progress="true"
+          />
+
+
+      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+          ohos:id="$+id:pb3"
+          ohos:width="match_parent"
+          ohos:height="30vp"
+          ohos:left_margin="20vp"
+          ohos:top_margin="20vp"
+          ohos:right_margin="20vp"
+          custom:zpb_padding="0px"
+          custom:zpb_pb_color="#FF4CB862"
+          custom:zpb_show_mode="rect"
+          />
+
+
+
+      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+          ohos:id="$+id:pb4"
+          ohos:height="40vp"
+          ohos:width="match_parent"
+          ohos:left_margin="20vp"
+          ohos:top_margin="20vp"
+          ohos:right_margin="20vp"
+          custom:zpb_bg_color="#dbdbdb"
+          custom:zpb_gradient_from="#419120"
+          custom:zpb_gradient_to="#b3eb50"
+          custom:zpb_max="100"
+          custom:zpb_open_gradient="true"
+          custom:zpb_second_pb_color="1vp"
+          custom:zpb_show_mode="rect"
+          />
+
+
+
+
+
+      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+          ohos:height="30vp"
+          ohos:width="match_parent"
+          ohos:id="$+id:pb5"
+          ohos:left_margin="20vp"
+          ohos:top_margin="20vp"
+          ohos:right_margin="20vp"
+          custom:zpb_bg_color="#0000"
+          custom:zpb_border_color="#85ff00"
+          custom:zpb_border_width="2vp"
+          custom:zpb_draw_border="true"
+          custom:zpb_gradient_from="#7f58A800"
+          custom:zpb_gradient_to="#7fa8e600"
+          custom:zpb_max="100"
+          custom:zpb_open_gradient="true"
+          custom:zpb_padding="0px"
+          custom:zpb_round_rect_radius="4vp"
+          custom:zpb_show_mode="round_rect"
+          />
+
+
+      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+          ohos:height="30vp"
+          ohos:width="match_parent"
+          ohos:id="$+id:pb6"
+          ohos:left_margin="20vp"
+          ohos:top_margin="20vp"
+          ohos:right_margin="20vp"
+          custom:zpb_bg_color="#0000"
+          custom:zpb_border_color="#85ff00"
+          custom:zpb_border_width="2vp"
+          custom:zpb_draw_border="false"
+          custom:zpb_gradient_from="#7ff5515f"
+          custom:zpb_gradient_to="#7f9f041b"
+          custom:zpb_open_gradient="false"
+          custom:zpb_max="100"
+          custom:zpb_progress="0"
+          custom:zpb_second_progress="0"
+          custom:zpb_show_second_progress="true"
+          custom:zpb_padding="0px"
+          custom:zpb_round_rect_radius="30px"
+          custom:zpb_show_mode="round_rect"
+          />
+
+      <Text
+          ohos:id="$+id:tv_progress"
+          ohos:height="match_content"
+          ohos:width="match_parent"
+          ohos:text_color="#FF030303"
+          ohos:layout_alignment="center"
+          ohos:top_margin="5vp"
+          ohos:text_size="20vp"
+          />
+
+      <Text
+          ohos:height="match_content"
+          ohos:width="match_parent"
+          ohos:top_margin="10vp"
+          ohos:text_size="30vp"
+          ohos:text="拖动试试?"
+          />
+
+      <Slider
+          ohos:height="match_content"
+          ohos:width="match_parent"
+          ohos:id="$+id:seekbar"
+          ohos:max="100"
+          ohos:progress="0"
+          ohos:left_margin="20vp"
+          ohos:top_margin="10vp"
+          ohos:right_margin="20vp"
+          />
+
+   </DirectionalLayout>
+</ScrollView>

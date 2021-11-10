@@ -1,1 +1,1 @@
-include ':app', ':zz-horizontal-progressbar'
+include ':entry', ':zzhoritontalprogressbar'
