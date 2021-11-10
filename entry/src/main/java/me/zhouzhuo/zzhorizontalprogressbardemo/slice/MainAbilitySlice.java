@@ -22,17 +22,20 @@ import ohos.agp.components.Slider;
 import ohos.agp.components.Text;
 import me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar;
 import me.zhouzhuo.zzhorizontalprogressbardemo.ResourceTable;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 
 /**
  * MainAbilitySlice.
  */
 public class MainAbilitySlice extends AbilitySlice {
+    private final HiLogLabel hiLogLabel = new HiLogLabel(0,0,"ZzHorizontalProgressBar");
+
     @Override
     public void onStart(Intent intent) {
 
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_main);
-
 
 
         final ZzHorizontalProgressBar pb = (ZzHorizontalProgressBar) findComponentById(ResourceTable.Id_pb);
@@ -74,8 +77,7 @@ public class MainAbilitySlice extends AbilitySlice {
                         pb5.setGradientColorAndBorderColor(0x7fb4ec51, 0x7f429321, 0xff85ff00);
                     }
                 } catch (Exception e) {
-
-                    System.out.println("null pointer exception");
+                    HiLog.debug(hiLogLabel,"null pointer exception");
                 }
             }
 
@@ -109,7 +111,7 @@ public class MainAbilitySlice extends AbilitySlice {
                 }
             });
         } catch (Exception e) {
-            System.out.println("null pointer exception");
+            HiLog.debug(hiLogLabel,"null pointer exception");
         }
 
 

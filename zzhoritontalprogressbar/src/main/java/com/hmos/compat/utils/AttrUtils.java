@@ -18,12 +18,17 @@ package com.hmos.compat.utils;
 
 import ohos.agp.components.AttrSet;
 import ohos.agp.components.element.Element;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 
 /**
  * AttrUtils class.
  */
 public class AttrUtils {
-    
+    private static HiLogLabel hiLogLabel = new HiLogLabel(0,0,"attrutils");
+
+    private AttrUtils(){
+    }
     /**
      * Function to get int value from attribute.
      *
@@ -40,7 +45,7 @@ public class AttrUtils {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
@@ -61,7 +66,7 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getFloatValue();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
@@ -82,7 +87,7 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getBoolValue();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
@@ -103,7 +108,7 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getLongValue();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
@@ -124,7 +129,7 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getColorValue().getValue();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
@@ -145,7 +150,7 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getDimensionValue();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
@@ -166,7 +171,7 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getStringValue();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
@@ -186,7 +191,7 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getElement();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            HiLog.debug(hiLogLabel,"exception");
         }
         return value;
     }
