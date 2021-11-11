@@ -11,9 +11,9 @@ import ohos.agp.utils.Color;
 import ohos.agp.utils.Point;
 import ohos.agp.utils.RectFloat;
 import ohos.app.Context;
-import com.hmos.compat.utils.AttrUtils;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
+import com.hmos.compat.utils.AttrUtils;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
 public class ZzHorizontalProgressBar extends Component implements DrawTask {
 
 
-    private final HiLogLabel hiLogLabel = new HiLogLabel(0,0,"ZzHorizontalProgressBar");
+    private final HiLogLabel hiLogLabel = new HiLogLabel(0, 0, "ZzHorizontalProgressBar");
     public static final int SHOW_MODE_ROUND = 0;
     public static final int SHOW_MODE_RECT = 1;
     public static final int SHOW_MODE_ROUND_RECT = 2;
@@ -104,6 +104,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
     public interface OnProgressChangedListener {
         void onProgressChanged(ZzHorizontalProgressBar progressBar, int max, int progress);
+
         void onSecondProgressChanged(ZzHorizontalProgressBar progressBar, int max, int progress);
     }
 
@@ -115,8 +116,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
     public ZzHorizontalProgressBar(Context context) {
         this(context, null);
-        init( null);
-
+        init(null);
     }
 
     /**
@@ -129,7 +129,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
     public ZzHorizontalProgressBar(Context context, AttrSet attrSet) {
         super(context, attrSet);
-        init( attrSet);
+        init(attrSet);
         addDrawTask(this);
     }
 
@@ -145,16 +145,16 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
     public ZzHorizontalProgressBar(Context context, AttrSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init( attrs);
+        init(attrs);
         addDrawTask(this);
     }
 
     private void init( AttrSet attrs) {
-        initAttrs( attrs);
+        initAttrs(attrs);
         initPaths();
     }
 
-    private void initAttrs( AttrSet attrs) {
+    private void initAttrs(AttrSet attrs) {
         mMax = AttrUtils.getIntFromAttr(attrs, "zpb_max", 100);
         mProgress = AttrUtils.getIntFromAttr(attrs, "zpb_progress", 0);
         mBgColor =  AttrUtils.getColorFromAttr(attrs, "zpb_bg_color", 0xff3F51B5);
@@ -238,7 +238,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 drawBorderRoundRect(canvas);
                 break;
             default:
-                HiLog.debug(hiLogLabel,"default switch case");
+                HiLog.debug(hiLogLabel, "default switch case in OnDraw");
         }
     }
 
@@ -258,7 +258,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         }
         int progressHeight = getHeight() - mPadding * 2;
         if (mOpenGradient) {
-
             int progressWidth = width - mPadding * 2;
             float dx;
             dx = progressWidth * percent;
@@ -282,7 +281,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                     TileMode.MIRROR_TILEMODE);
             //gradient
             mGradientPaint.setShader(shader, Paint.ShaderType.LINEAR_SHADER);
-
             int radius = width > getHeight() ? getHeight() / 2 : width / 2;
             if (dx < getHeight()) {
                 //left circle
@@ -297,14 +295,12 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                             + progressHeight / 2.0f, mPadding
                             + progressHeight / 2.0f, progressHeight / 2.0f, mGradientPaint);
                 }
-
             } else {
                 //progress line
                 RectFloat rectF = new RectFloat(mPadding, mPadding, mPadding
                         + dx, mPadding + progressHeight);
                 canvas.drawRoundRect(rectF, radius, radius, mGradientPaint);
             }
-
         } else {
             int progressWidth = width - mPadding * 2 - progressHeight;
             float dx = progressWidth * percent;
@@ -331,7 +327,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
             RectFloat rectF = new RectFloat(left, mPadding, left + dx, mPadding + progressHeight);
             canvas.drawRect(rectF, mProgressPaint);
         }
-
 
         //draw second progress
         if (mShowSecondProgress) {
@@ -975,7 +970,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 this.mShowMode = 2;
                 break;
             default:
-                HiLog.debug(hiLogLabel,"default switch case");
+                HiLog.debug(hiLogLabel, "default switch case in setShowMode");
         }
         invalidate();
     }
@@ -1135,7 +1130,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
             case "round_rect":
                 return 2;
             default:
-                HiLog.debug(hiLogLabel,"default switch case");
+                HiLog.debug(hiLogLabel, "default switch case in getHandlezpbshowmode");
         }
 
         return 0;
@@ -1156,7 +1151,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 case "line":
                     return 1;
                 default:
-                    HiLog.debug(hiLogLabel,"default switch case");
+                    HiLog.debug(hiLogLabel, "default switch case getHandlezpbshowssecondpointshape");
 
             }
         }
