@@ -131,7 +131,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         super(context, attrSet);
         init( attrSet);
         addDrawTask(this);
-
     }
 
     /**
@@ -704,7 +703,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     private void drawBorderRoundRect(Canvas canvas) {
 
         if (mDrawBorder) {
-
             int bgHeight = getHeight();
             int width = getWidth();
             RectFloat rect = new RectFloat(mBorderWidth / 2.0f, mBorderWidth / 2.0f,
@@ -717,7 +715,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * 绘制方形背景.
      */
     private void drawBackgroundRectMode(Canvas canvas) {
-
         int bgHeight = getHeight();
         int width = getWidth();
         RectFloat rectF = new RectFloat(0, 0, width, bgHeight);
@@ -728,7 +725,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * 绘制圆角矩形背景.
      */
     private void drawBackgroundRoundRectMode(Canvas canvas) {
-
         int bgHeight = getHeight();
         int width = getWidth();
         RectFloat rectF = new RectFloat(mBorderWidth / 2.0f, mBorderWidth / 2.0f,
@@ -742,7 +738,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @return 最大值
      */
     public int getMax() {
-
         return mMax;
     }
 
@@ -752,7 +747,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param max 最大值
      */
     public void setMax(int max) {
-
         this.mMax = max;
         invalidate();
     }
@@ -773,20 +767,16 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      */
 
     public void setProgress(int progress) {
-        
         if (progress < 0) {
-
             this.mProgress = 0;
         } else if (progress > mMax) {
 
             this.mProgress = mMax;
         } else {
-
             this.mProgress = progress;
         }
         invalidate();
         if (mOnProgressChangedListener != null) {
-
             mOnProgressChangedListener.onProgressChanged(this, mMax, this.mProgress);
         }
     }
@@ -854,7 +844,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param secondProgressShape 形状，点：{@link #SHAPE_POINT} 线：{@link #SHAPE_LINE}
      */
     public void setSecondProgressShape(@SecondProgressShape int secondProgressShape) {
-
         this.mSecondProgressShape = secondProgressShape;
         invalidate();
     }
@@ -874,7 +863,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param bgColor 颜色值
      */
     public void setBgColor(int bgColor) {
-
         this.mBgColor = bgColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(bgColor);
         mBgPaint.setColor(hmosColor);
@@ -923,7 +911,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param secondProgressColor 颜色值
      */
     public void setSecondProgressColor(int secondProgressColor) {
-
         this.mSecondProgressColor = secondProgressColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(secondProgressColor);
         mSecondProgressPaint.setColor(hmosColor);
@@ -945,7 +932,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param progressColor 颜色值
      */
     public void setProgressColor(int progressColor) {
-
         this.mProgressColor = progressColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(progressColor);
         mProgressPaint.setColor(hmosColor);
@@ -1051,7 +1037,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param borderColor 颜色值
      */
     public void setBorderColor(int borderColor) {
-
         this.mBorderColor = borderColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(this.mBorderColor);
         this.mBorderPaint.setColor(hmosColor);
@@ -1090,7 +1075,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param borderColor 边框颜色
      */
     public void setGradientColorAndBorderColor(int from, int to, int borderColor) {
-
         this.mGradientFrom = from;
         this.mGradientTo = to;
         this.mBorderColor = borderColor;
@@ -1143,7 +1127,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @return return 0
      */
     public int getHandlezpbshowmode(String mode) {
-
         switch (mode) {
             case "round":
                 return 0;
