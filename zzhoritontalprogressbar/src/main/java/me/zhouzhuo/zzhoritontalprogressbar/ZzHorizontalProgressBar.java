@@ -23,7 +23,6 @@ import java.lang.annotation.Target;
  * Horizontal progress bar*
  * Created by 周卓 on 2016/9/22.
  */
-
 public class ZzHorizontalProgressBar extends Component implements DrawTask {
 
     private static final HiLogLabel HI_LOG_LABEL = new HiLogLabel(0, 0, "ZzHorizontalProgressBar");
@@ -99,7 +98,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * OnProgressChangedListener interface.
      */
-
     public interface OnProgressChangedListener {
         void onProgressChanged(ZzHorizontalProgressBar progressBar, int max, int progress);
 
@@ -245,7 +243,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @noinspection checkstyle:OperatorWrap
      * @noinspection checkstyle:VariableDeclarationUsageDistance
      */
-
     private void drawProgressCircleMode(Canvas canvas) {
         int width = getWidth();
         float percent = 0;
@@ -480,7 +477,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw square progress.
      */
-
     private void drawProgressRectMode(Canvas canvas) {
         int width = getWidth();
         float percent = 0;
@@ -557,7 +553,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw rounded rectangle progress.
      */
-
     private void drawProgressRoundRectMode(Canvas canvas) {
         int width = getWidth();
         float percent = 0;
@@ -654,7 +649,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw a semicircular background.
      */
-
     private void drawBackgroundCircleMode(Canvas canvas) {
         int bgHeight = getHeight();
         int width = getWidth();
@@ -670,7 +664,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw a semicircular border.
      */
-
     private void drawBorderCircleMode(Canvas canvas) {
         if (mDrawBorder) {
             int bgHeight = getHeight();
@@ -683,7 +676,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw a half-square border.
      */
-
     private void drawBorderRectMode(Canvas canvas) {
         if (mDrawBorder) {
             int bgHeight = getHeight();
@@ -696,7 +688,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw a rounded rectangular border.
      */
-
     private void drawBorderRoundRect(Canvas canvas) {
         if (mDrawBorder) {
             int bgHeight = getHeight();
@@ -710,7 +701,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw a square background.
      */
-
     private void drawBackgroundRectMode(Canvas canvas) {
         int bgHeight = getHeight();
         int width = getWidth();
@@ -721,7 +711,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * Draw a rounded rectangular background.
      */
-
     private void drawBackgroundRoundRectMode(Canvas canvas) {
         int bgHeight = getHeight();
         int width = getWidth();
@@ -735,7 +724,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return Maximum
      */
-
     public int getMax() {
         return mMax;
     }
@@ -745,7 +733,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param max Maximum
      */
-
     public void setMax(int max) {
         this.mMax = max;
         invalidate();
@@ -756,7 +743,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return progress value
      */
-
     public int getProgress() {
         return mProgress;
     }
@@ -766,7 +752,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param progress progress value
      */
-
     public void setProgress(int progress) {
         if (progress < 0) {
             this.mProgress = 0;
@@ -787,7 +772,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return Yes/No
      */
-
     public boolean isShowSecondProgress() {
         return mShowSecondProgress;
     }
@@ -797,7 +781,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param showSecondProgress Yes/No
      */
-
     public void setShowSecondProgress(boolean showSecondProgress) {
         this.mShowSecondProgress = showSecondProgress;
         invalidate();
@@ -808,7 +791,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return progress value
      */
-
     public int getSecondProgress() {
         return mSecondProgress;
     }
@@ -818,7 +800,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param secondProgress progress value
      */
-
     public void setSecondProgress(int secondProgress) {
         if (secondProgress < 0) {
             this.mSecondProgress = 0;
@@ -839,7 +820,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return shape, dot:{@link #SHAPE_POINT} line:{@link #SHAPE_LINE}
      */
-
     public int getSecondProgressShape() {
         return mSecondProgressShape;
     }
@@ -849,7 +829,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param secondProgressShape shape, dot:{@link #SHAPE_POINT} line:{@link #SHAPE_LINE}
      */
-
     public void setSecondProgressShape(@SecondProgressShape int secondProgressShape) {
         this.mSecondProgressShape = secondProgressShape;
         invalidate();
@@ -860,7 +839,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return color value
      */
-
     public int getBgColor() {
         return mBgColor;
     }
@@ -870,7 +848,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param bgColor color value
      */
-
     public void setBgColor(int bgColor) {
         this.mBgColor = bgColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(bgColor);
@@ -883,7 +860,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return Yes/No
      */
-
     public boolean isOpenSecondGradient() {
         return mOpenSecondGradient;
     }
@@ -893,7 +869,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param openSecondGradient Yes/No
      */
-
     public void setOpenSecondGradient(boolean openSecondGradient) {
         this.mOpenSecondGradient = openSecondGradient;
         invalidate();
@@ -912,7 +887,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return color value
      */
-
     public int getSecondProgressColor() {
         return mSecondProgressColor;
     }
@@ -922,7 +896,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param secondProgressColor color value
      */
-
     public void setSecondProgressColor(int secondProgressColor) {
         this.mSecondProgressColor = secondProgressColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(secondProgressColor);
@@ -935,7 +908,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return color value
      */
-
     public int getProgressColor() {
         return mProgressColor;
     }
@@ -945,7 +917,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param progressColor color value
      */
-
     public void setProgressColor(int progressColor) {
         this.mProgressColor = progressColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(progressColor);
@@ -958,7 +929,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return margin value
      */
-
     public int getProgressBarPadding() {
         return mPadding;
     }
@@ -968,7 +938,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param padding margin value
      */
-
     public void setPadding(int padding) {
         this.mPadding = padding;
         invalidate();
@@ -979,7 +948,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param showMode display mode，0：Half circle，1：Square，2：rounded rectangle
      */
-
     public void setShowMode(@ShowMode int showMode) {
 
         switch (showMode) {
@@ -1003,7 +971,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return percentage value
      */
-
     public int getPercentage() {
         if (mMax == 0) {
             return 0;
@@ -1016,7 +983,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return percentage value
      */
-
     public float getPercentageFloat() {
         if (mMax == 0) {
             return 0f;
@@ -1029,7 +995,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return Yes/No
      */
-
     public boolean isOpenGradient() {
         return mOpenGradient;
     }
@@ -1039,7 +1004,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param openGradient Yes/No
      */
-
     public void setOpenGradient(boolean openGradient) {
         this.mOpenGradient = openGradient;
         invalidate();
@@ -1058,7 +1022,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param borderColor color value
      */
-
     public void setBorderColor(int borderColor) {
         this.mBorderColor = borderColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(this.mBorderColor);
@@ -1072,7 +1035,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param from start color
      * @param to   End Color
      */
-
     public void setGradientColor(int from, int to) {
         this.mGradientFrom = from;
         this.mGradientTo = to;
@@ -1085,7 +1047,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param from start color
      * @param to   End Color
      */
-
     public void setSecondGradientColor(int from, int to) {
         this.mSecondGradientFrom = from;
         this.mSecondGradientTo = to;
@@ -1099,7 +1060,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param to          End Color
      * @param borderColor border color
      */
-
     public void setGradientColorAndBorderColor(int from, int to, int borderColor) {
         this.mGradientFrom = from;
         this.mGradientTo = to;
@@ -1114,7 +1074,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @return color value
      */
-
     public int getBorderColor() {
         return mBorderColor;
     }
@@ -1124,7 +1083,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *
      * @param onProgressChangedListener progress value change callback
      */
-
     public void setOnProgressChangedListener(OnProgressChangedListener onProgressChangedListener) {
         this.mOnProgressChangedListener = onProgressChangedListener;
     }
@@ -1135,7 +1093,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param colors         A color int.
      * @return color
      */
-
     public static Color[] changeParamToColors(int[] colors) {
         Color[] newColors = new Color[colors.length];
         for (int i = 0; i < colors.length; i++) {
@@ -1154,7 +1111,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param mode         A string mode.
      * @return return 0
      */
-
     public int getHandlezpbshowmode(String mode) {
         switch (mode) {
             case "round":
@@ -1175,7 +1131,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param mode         String mode.
      * @return return 0
      */
-
     public int getHandlezpbshowssecondpointshape(String mode) {
         if (mode != null) {
             switch (mode) {

@@ -39,7 +39,6 @@ public class AttrUtils {
      * @param defaultValue          int defaultValue
      * @return value
      */
-
     public static int getIntFromAttr(AttrSet attrs, String name, int defaultValue) {
         int value = defaultValue;
         try {
@@ -62,7 +61,6 @@ public class AttrUtils {
      * @return value
      *
      */
-
     public static float getFloatFromAttr(AttrSet attrs, String name, float defaultValue) {
         float value = defaultValue;
         try {
@@ -84,7 +82,6 @@ public class AttrUtils {
      * @return value
      *
      */
-
     public static boolean getBooleanFromAttr(AttrSet attrs, String name, boolean defaultValue) {
         boolean value = defaultValue;
         try {
@@ -106,7 +103,6 @@ public class AttrUtils {
      * @return value
      *
      */
-
     public static long getLongFromAttr(AttrSet attrs, String name, long defaultValue) {
         long value = defaultValue;
         try {
@@ -128,7 +124,6 @@ public class AttrUtils {
      * @return value
      *
      */
-
     public static int getColorFromAttr(AttrSet attrs, String name, int defaultValue) {
         int value = defaultValue;
         try {
@@ -150,7 +145,6 @@ public class AttrUtils {
      * @return value
      *
      */
-
     public static int getDimensionFromAttr(AttrSet attrs, String name, int defaultValue) {
         int value = defaultValue;
         try {
@@ -162,7 +156,6 @@ public class AttrUtils {
         }
         return value;
     }
-
     /**
      * Function to get string value from attribute.
      *
@@ -172,7 +165,6 @@ public class AttrUtils {
      * @return value
      *
      */
-
     public static String getStringFromAttr(AttrSet attrs, String name, String defaultValue) {
         String value = defaultValue;
         try {
@@ -193,7 +185,6 @@ public class AttrUtils {
      * @return value
      *
      */
-
     public static Element getElementFromAttr(AttrSet attrs, String name) {
         Element value = null;
         try {
