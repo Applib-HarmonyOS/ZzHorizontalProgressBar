@@ -54,6 +54,7 @@ allprojects {
 checkstyle {
     toolVersion "8.43"
 }
+
 sonarqube {
     properties {
         property "sonar.projectKey", "applibgroup_ZzHorizontalProgressBar"

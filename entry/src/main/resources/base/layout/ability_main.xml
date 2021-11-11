@@ -154,6 +154,7 @@
           ohos:layout_alignment="center"
           ohos:top_margin="5vp"
           ohos:text_size="20vp"
+          ohos:left_padding="20vp"
           />
 
       <Text
@@ -161,6 +162,7 @@
           ohos:width="match_parent"
           ohos:top_margin="10vp"
           ohos:text_size="30vp"
+          ohos:left_padding="20vp"
           ohos:text="拖动试试?"
           />
 

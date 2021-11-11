@@ -149,7 +149,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         addDrawTask(this);
     }
 
-    private void init( AttrSet attrs) {
+    private void init(AttrSet attrs) {
         initAttrs(attrs);
         initPaths();
     }
@@ -257,77 +257,13 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
             percent = mProgress * 1.0f / mMax;
         }
         int progressHeight = getHeight() - mPadding * 2;
-        if (mOpenGradient) {
-            int progressWidth = width - mPadding * 2;
-            float dx;
-            dx = progressWidth * percent;
+        
+        drawProgressCircleOpenGradient(canvas, width,  percent,  progressHeight);
+        drawProgressCircleSecondProgress(canvas, width);
+    }
 
-            int[] colors = new int[2];
-            float[] positions = new float[2];
-            //from color
-            colors[0] = mGradientFrom;
-            positions[0] = 0;
-            //to color
-            colors[1] = mGradientTo;
-            positions[1] = 1;
-            Point[] points = {new Point(mPadding
-                    + progressHeight / 2.0f, mPadding), new Point(mPadding
-                    + progressHeight / 2.0f + dx, mPadding + progressHeight)};
-            Color[] color = ZzHorizontalProgressBar.changeParamToColors(colors);
-            LinearShader shader = new LinearShader(
-                    points,
-                    positions,
-                    color,
-                    TileMode.MIRROR_TILEMODE);
-            //gradient
-            mGradientPaint.setShader(shader, Paint.ShaderType.LINEAR_SHADER);
-            int radius = width > getHeight() ? getHeight() / 2 : width / 2;
-            if (dx < getHeight()) {
-                //left circle
-                if (mProgress == 0) {
-                    if (mShowZeroPoint) {
-                        canvas.drawCircle(mPadding
-                                + progressHeight / 2.0f, mPadding
-                                + progressHeight / 2.0f, progressHeight / 2.0f, mGradientPaint);
-                    }
-                } else {
-                    canvas.drawCircle(mPadding
-                            + progressHeight / 2.0f, mPadding
-                            + progressHeight / 2.0f, progressHeight / 2.0f, mGradientPaint);
-                }
-            } else {
-                //progress line
-                RectFloat rectF = new RectFloat(mPadding, mPadding, mPadding
-                        + dx, mPadding + progressHeight);
-                canvas.drawRoundRect(rectF, radius, radius, mGradientPaint);
-            }
-        } else {
-            int progressWidth = width - mPadding * 2 - progressHeight;
-            float dx = progressWidth * percent;
-            Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(mProgressColor);
-            mProgressPaint.setColor(hmosColor);
-            float left = mPadding + progressHeight / 2.0f;
-            //left circle
-            if (mProgress == 0) {
-                if (mShowZeroPoint) {
-                    canvas.drawCircle(left, left, progressHeight / 2.0f, mProgressPaint);
-                }
-            } else {
-                canvas.drawCircle(left, left, progressHeight / 2.0f, mProgressPaint);
-            }
-            //right circle
-            if (mProgress == 0) {
-                if (mShowZeroPoint) {
-                    canvas.drawCircle(left + dx, left, progressHeight / 2.0f, mProgressPaint);
-                }
-            } else {
-                canvas.drawCircle(left + dx, left, progressHeight / 2.0f, mProgressPaint);
-            }
-            //middle line
-            RectFloat rectF = new RectFloat(left, mPadding, left + dx, mPadding + progressHeight);
-            canvas.drawRect(rectF, mProgressPaint);
-        }
 
+    private void drawProgressCircleSecondProgress(Canvas canvas, int width) {
         //draw second progress
         if (mShowSecondProgress) {
             float secondPercent = 0;
@@ -340,8 +276,8 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 float secondDx;
                 secondDx = secondProgressWidth * secondPercent;
 
-                int[] secondColors = new int[2];
                 float[] secondPositions = new float[2];
+                int[] secondColors = new int[2];
                 //from color
                 secondColors[0] = mSecondGradientFrom;
                 secondPositions[0] = 0;
@@ -363,18 +299,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
 
                 int secondRadius = width > getHeight() ? getHeight() / 2 : width / 2;
                 if (secondDx < getHeight()) {
-                    //left circle
-                    if (mSecondProgress == 0) {
-                        if (mShowZeroPoint) {
-                            canvas.drawCircle(mPadding
-                                    + secondProgressHeight / 2.0f, mPadding
-                                    + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondGradientPaint);
-                        }
-                    } else {
-                        canvas.drawCircle(mPadding
-                                + secondProgressHeight / 2.0f, mPadding
-                                + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondGradientPaint);
-                    }
+                    drawProgressCircleSecondProgressleftCircle(canvas, secondProgressHeight);
                 } else {
                     //progress line
                     RectFloat rectF = new RectFloat(mPadding, mPadding, mPadding
@@ -382,73 +307,188 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                     canvas.drawRoundRect(rectF, secondRadius, secondRadius, mSecondGradientPaint);
                 }
             } else {
-                //no gradient
-                if (mSecondProgressShape == 0) {
-                    //point shape
-                    int secondProgressWidth = width - mPadding * 2;
-                    float secondDx = secondProgressWidth * secondPercent;
-                    //progress line
-                    float px = mPadding + secondProgressHeight / 2.0f + secondDx;
-                    if (px < width - mPadding - secondProgressHeight / 2.0f) {
-                        if (mSecondProgress == 0) {
-                            if (mShowZeroPoint) {
-                                canvas.drawCircle(px, mPadding
-                                        + secondProgressHeight / 2.0f,
-                                        secondProgressHeight / 2.0f, mSecondProgressPaint);
-                            }
-                        } else {
-                            canvas.drawCircle(px, mPadding
-                                    + secondProgressHeight / 2.0f,
-                                    secondProgressHeight / 2.0f, mSecondProgressPaint);
-                        }
-                    } else {
-                        canvas.drawCircle(px
-                                - secondProgressHeight, mPadding
-                                + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondProgressPaint);
-                    }
+                drawProgressCirclSecondProgressnoGradient(canvas, width, secondPercent, secondProgressHeight);
 
-                } else {
-
-                    //line shape
-                    int secondProgressWidth = width - mPadding * 2 - secondProgressHeight;
-                    float dx = secondProgressWidth * secondPercent;
-                    Color hmosColor1 = ZzHorizontalProgressBar.changeParamToColor(mSecondProgressColor);
-                    mSecondProgressPaint.setColor(hmosColor1);
-                    //left circle
-                    if (mSecondProgress == 0) {
-                        if (mShowZeroPoint) {
-                            canvas.drawCircle(mPadding
-                                    + secondProgressHeight / 2.0f, mPadding
-                                    + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondProgressPaint);
-                        }
-                    } else {
-                        canvas.drawCircle(mPadding
-                                + secondProgressHeight / 2.0f, mPadding
-                                + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondProgressPaint);
-                    }
-                    //right circle
-                    if (mSecondProgress == 0) {
-                        if (mShowZeroPoint) {
-                            canvas.drawCircle(mPadding
-                                    + secondProgressHeight / 2.0f
-                                    + dx, mPadding + secondProgressHeight / 2.0f,
-                                    secondProgressHeight / 2.0f, mSecondProgressPaint);
-                        }
-                    } else {
-                        canvas.drawCircle(mPadding + secondProgressHeight / 2.0f
-                                + dx, mPadding + secondProgressHeight / 2.0f,
-                                secondProgressHeight / 2.0f, mSecondProgressPaint);
-                    }
-                    //middle line
-                    RectFloat rectF = new RectFloat(mPadding
-                            + secondProgressHeight / 2.0f, mPadding, mPadding
-                            + secondProgressHeight / 2.0f + dx, mPadding
-                            + secondProgressHeight);
-                    canvas.drawRect(rectF, mSecondProgressPaint);
-                }
             }
         }
+    }
 
+
+    private void drawProgressCirclSecondProgressnoGradient(Canvas canvas, int width,
+                                                           float secondPercent, int secondProgressHeight) {
+        //no gradient
+        if (mSecondProgressShape == 0) {
+            //point shape
+            int secondProgressWidth = width - mPadding * 2;
+            float secondDx = secondProgressWidth * secondPercent;
+            //progress line
+            float px = mPadding + secondProgressHeight / 2.0f + secondDx;
+            if (px < width - mPadding - secondProgressHeight / 2.0f) {
+                if (mSecondProgress == 0) {
+                    if (mShowZeroPoint) {
+                        canvas.drawCircle(px, mPadding
+                                + secondProgressHeight / 2.0f,
+                                secondProgressHeight / 2.0f, mSecondProgressPaint);
+                    }
+                } else {
+                    canvas.drawCircle(px, mPadding
+                            + secondProgressHeight / 2.0f,
+                            secondProgressHeight / 2.0f, mSecondProgressPaint);
+                }
+            } else {
+                canvas.drawCircle(px
+                        - secondProgressHeight, mPadding
+                        + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondProgressPaint);
+            }
+
+        } else {
+            drawProgressCirclSecondProgressnoGradientlineShape(canvas, width, secondProgressHeight, secondPercent);
+
+        }
+    }
+
+    private void drawProgressCirclSecondProgressnoGradientlineShape(Canvas canvas, int width,
+                                                                    int secondProgressHeight, float secondPercent) {
+        //line shape
+        int secondProgressWidth = width - mPadding * 2 - secondProgressHeight;
+        float dx = secondProgressWidth * secondPercent;
+        Color hmosColor1 = ZzHorizontalProgressBar.changeParamToColor(mSecondProgressColor);
+        mSecondProgressPaint.setColor(hmosColor1);
+        //left circle
+        if (mSecondProgress == 0) {
+            if (mShowZeroPoint) {
+                canvas.drawCircle(mPadding
+                            + secondProgressHeight / 2.0f, mPadding
+                            + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondProgressPaint);
+            }
+        } else {
+            canvas.drawCircle(mPadding
+                        + secondProgressHeight / 2.0f, mPadding
+                        + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondProgressPaint);
+        }
+        //right circle
+        if (mSecondProgress == 0) {
+            if (mShowZeroPoint) {
+                canvas.drawCircle(mPadding
+                                + secondProgressHeight / 2.0f
+                                + dx, mPadding + secondProgressHeight / 2.0f,
+                            secondProgressHeight / 2.0f, mSecondProgressPaint);
+            }
+        } else {
+            canvas.drawCircle(mPadding + secondProgressHeight / 2.0f
+                                + dx, mPadding + secondProgressHeight / 2.0f,
+                        secondProgressHeight / 2.0f, mSecondProgressPaint);
+        }
+        //middle line
+        RectFloat rectF = new RectFloat(mPadding
+                    + secondProgressHeight / 2.0f, mPadding, mPadding
+                    + secondProgressHeight / 2.0f + dx, mPadding
+                    + secondProgressHeight);
+        canvas.drawRect(rectF, mSecondProgressPaint);
+
+    }
+
+    private void drawProgressCircleSecondProgressleftCircle(Canvas canvas, int secondProgressHeight) {
+        //left circle
+        if (mSecondProgress == 0) {
+            if (mShowZeroPoint) {
+                canvas.drawCircle(mPadding
+                        + secondProgressHeight / 2.0f, mPadding
+                        + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondGradientPaint);
+            }
+        } else {
+            canvas.drawCircle(mPadding
+                    + secondProgressHeight / 2.0f, mPadding
+                    + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondGradientPaint);
+        }
+
+    }
+
+    private void drawProgressCircleOpenGradientl(int width, float percent, int progressHeight) {
+        int progressWidth = width - mPadding * 2;
+        float dx;
+        dx = progressWidth * percent;
+
+        int[] colors = new int[2];
+        float[] positions = new float[2];
+        //from color
+        colors[0] = mGradientFrom;
+        positions[0] = 0;
+        //to color
+        colors[1] = mGradientTo;
+        positions[1] = 1;
+        Point[] points = {new Point(mPadding
+                + progressHeight / 2.0f, mPadding), new Point(mPadding
+                + progressHeight / 2.0f + dx, mPadding + progressHeight)};
+        Color[] color = ZzHorizontalProgressBar.changeParamToColors(colors);
+        LinearShader shader = new LinearShader(
+                points,
+                positions,
+                color,
+                TileMode.MIRROR_TILEMODE);
+        //gradient
+        mGradientPaint.setShader(shader, Paint.ShaderType.LINEAR_SHADER);
+
+    }
+
+    private void drawProgressCircleOpenGradient(Canvas canvas, int width, float percent, int progressHeight) {
+        if (mOpenGradient) {
+            drawProgressCircleOpenGradientl(width, percent, progressHeight);
+            int progressWidth = width - mPadding * 2;
+            float dx;
+            dx = progressWidth * percent;
+
+            int radius = width > getHeight() ? getHeight() / 2 : width / 2;
+
+            if (dx < getHeight()) {
+                //left circle
+                if (mProgress == 0) {
+                    if (mShowZeroPoint) {
+                        canvas.drawCircle(mPadding
+                                + progressHeight / 2.0f, mPadding
+                                + progressHeight / 2.0f, progressHeight / 2.0f, mGradientPaint);
+                    }
+                } else {
+                    canvas.drawCircle(mPadding
+                            + progressHeight / 2.0f, mPadding
+                            + progressHeight / 2.0f, progressHeight / 2.0f, mGradientPaint);
+                }
+            } else {
+                //progress line
+                RectFloat rectF = new RectFloat(mPadding, mPadding, mPadding
+                        + dx, mPadding + progressHeight);
+                canvas.drawRoundRect(rectF, radius, radius, mGradientPaint);
+            }
+        } else {
+            drawProgressCircleOpenGradientleftCircle(canvas, width, percent, progressHeight);
+        }
+    }
+
+    private void drawProgressCircleOpenGradientleftCircle(Canvas canvas, int width, float percent, int progressHeight) {
+        int progressWidth = width - mPadding * 2 - progressHeight;
+        float dx = progressWidth * percent;
+        Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(mProgressColor);
+        mProgressPaint.setColor(hmosColor);
+        float left = mPadding + progressHeight / 2.0f;
+        //left circle
+        if (mProgress == 0) {
+            if (mShowZeroPoint) {
+                canvas.drawCircle(left, left, progressHeight / 2.0f, mProgressPaint);
+            }
+        } else {
+            canvas.drawCircle(left, left, progressHeight / 2.0f, mProgressPaint);
+        }
+        //right circle
+        if (mProgress == 0) {
+            if (mShowZeroPoint) {
+                canvas.drawCircle(left + dx, left, progressHeight / 2.0f, mProgressPaint);
+            }
+        } else {
+            canvas.drawCircle(left + dx, left, progressHeight / 2.0f, mProgressPaint);
+        }
+        //middle line
+        RectFloat rectF = new RectFloat(left, mPadding, left + dx, mPadding + progressHeight);
+        canvas.drawRect(rectF, mProgressPaint);
     }
 
     /**
@@ -463,30 +503,10 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         }
         int progressHeight = getHeight() - mPadding * 2;
         if (mOpenGradient) {
+            drawProgressCircleOpenGradientl(width, percent, progressHeight);
             int progressWidth = width - mPadding * 2;
             float dx;
             dx = progressWidth * percent;
-
-            int[] colors = new int[2];
-            float[] positions = new float[2];
-            //from color
-            colors[0] = mGradientFrom;
-            positions[0] = 0;
-            //to color
-            colors[1] = mGradientTo;
-            positions[1] = 1;
-            Point[] points = {new Point(mPadding
-                    + progressHeight / 2.0f, mPadding), new Point(mPadding + progressHeight / 2.0f
-                    + dx, mPadding + progressHeight)};
-            Color[] color = ZzHorizontalProgressBar.changeParamToColors(colors);
-            LinearShader shader = new LinearShader(
-                    points,
-                    positions,
-                    color,
-                    TileMode.MIRROR_TILEMODE);
-            //gradient
-            mGradientPaint.setShader(shader, Paint.ShaderType.LINEAR_SHADER);
-
             //progress line
             RectFloat rectF = new RectFloat(mPadding, mPadding, mPadding + dx, mPadding + progressHeight);
             canvas.drawRect(rectF, mGradientPaint);
