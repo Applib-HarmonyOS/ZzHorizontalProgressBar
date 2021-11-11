@@ -19,16 +19,14 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
 /**
- * 水平进度条*
+ * Horizontal progress bar*
  * Created by 周卓 on 2016/9/22.
  */
 
 public class ZzHorizontalProgressBar extends Component implements DrawTask {
 
-
-    private final HiLogLabel hiLogLabel = new HiLogLabel(0, 0, "ZzHorizontalProgressBar");
+    private static final HiLogLabel HI_LOG_LABEL = new HiLogLabel(0, 0, "ZzHorizontalProgressBar");
     public static final int SHOW_MODE_ROUND = 0;
     public static final int SHOW_MODE_RECT = 1;
     public static final int SHOW_MODE_ROUND_RECT = 2;
@@ -86,7 +84,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
 
     private Paint mBorderPaint;
 
-
     @Target({ElementType.PARAMETER, ElementType.METHOD})
     @Retention(RetentionPolicy.SOURCE)
     private @interface ShowMode {
@@ -102,6 +99,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     /**
      * OnProgressChangedListener interface.
      */
+
     public interface OnProgressChangedListener {
         void onProgressChanged(ZzHorizontalProgressBar progressBar, int max, int progress);
 
@@ -123,7 +121,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * Second Constructor.
      *
      * @param context   context as parameter.
-     *
      * @param attrSet   attrset as parameter.
      *
      */
@@ -137,9 +134,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      *third Constructor.
      *
      * @param context context as parameter.
-     *
      * @param attrs  attrset as parameter.
-     *
      * @param defStyleAttr   defStyleAttr.
      *
      */
@@ -238,18 +233,19 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 drawBorderRoundRect(canvas);
                 break;
             default:
-                HiLog.debug(hiLogLabel, "default switch case in OnDraw");
+                HiLog.debug(HI_LOG_LABEL, "default switch case in OnDraw");
         }
     }
 
     /**
-     * 绘制半圆形进度.
+     * Draw a semicircular progress.
      *
      * @noinspection checkstyle:VariableDeclarationUsageDistance
      * @noinspection checkstyle:Indentation
      * @noinspection checkstyle:OperatorWrap
      * @noinspection checkstyle:VariableDeclarationUsageDistance
      */
+
     private void drawProgressCircleMode(Canvas canvas) {
         int width = getWidth();
         float percent = 0;
@@ -261,7 +257,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         drawProgressCircleOpenGradient(canvas, width,  percent,  progressHeight);
         drawProgressCircleSecondProgress(canvas, width);
     }
-
 
     private void drawProgressCircleSecondProgress(Canvas canvas, int width) {
         //draw second progress
@@ -308,11 +303,9 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 }
             } else {
                 drawProgressCirclSecondProgressnoGradient(canvas, width, secondPercent, secondProgressHeight);
-
             }
         }
     }
-
 
     private void drawProgressCirclSecondProgressnoGradient(Canvas canvas, int width,
                                                            float secondPercent, int secondProgressHeight) {
@@ -343,15 +336,12 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
 
         } else {
             drawProgressCirclSecondProgressnoGradientlineShape(canvas, width, secondProgressHeight, secondPercent);
-
         }
     }
 
     private void drawProgressCirclSecondProgressnoGradientlineShape(Canvas canvas, int width,
                                                                     int secondProgressHeight, float secondPercent) {
         //line shape
-        int secondProgressWidth = width - mPadding * 2 - secondProgressHeight;
-        float dx = secondProgressWidth * secondPercent;
         Color hmosColor1 = ZzHorizontalProgressBar.changeParamToColor(mSecondProgressColor);
         mSecondProgressPaint.setColor(hmosColor1);
         //left circle
@@ -367,6 +357,8 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                         + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondProgressPaint);
         }
         //right circle
+        int secondProgressWidth = width - mPadding * 2 - secondProgressHeight;
+        float dx = secondProgressWidth * secondPercent;
         if (mSecondProgress == 0) {
             if (mShowZeroPoint) {
                 canvas.drawCircle(mPadding
@@ -385,7 +377,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                     + secondProgressHeight / 2.0f + dx, mPadding
                     + secondProgressHeight);
         canvas.drawRect(rectF, mSecondProgressPaint);
-
     }
 
     private void drawProgressCircleSecondProgressleftCircle(Canvas canvas, int secondProgressHeight) {
@@ -401,14 +392,9 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                     + secondProgressHeight / 2.0f, mPadding
                     + secondProgressHeight / 2.0f, secondProgressHeight / 2.0f, mSecondGradientPaint);
         }
-
     }
 
     private void drawProgressCircleOpenGradientl(int width, float percent, int progressHeight) {
-        int progressWidth = width - mPadding * 2;
-        float dx;
-        dx = progressWidth * percent;
-
         int[] colors = new int[2];
         float[] positions = new float[2];
         //from color
@@ -417,6 +403,8 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         //to color
         colors[1] = mGradientTo;
         positions[1] = 1;
+        int progressWidth = width - mPadding * 2;
+        float dx = progressWidth * percent;
         Point[] points = {new Point(mPadding
                 + progressHeight / 2.0f, mPadding), new Point(mPadding
                 + progressHeight / 2.0f + dx, mPadding + progressHeight)};
@@ -428,18 +416,15 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 TileMode.MIRROR_TILEMODE);
         //gradient
         mGradientPaint.setShader(shader, Paint.ShaderType.LINEAR_SHADER);
-
     }
 
     private void drawProgressCircleOpenGradient(Canvas canvas, int width, float percent, int progressHeight) {
         if (mOpenGradient) {
             drawProgressCircleOpenGradientl(width, percent, progressHeight);
-            int progressWidth = width - mPadding * 2;
-            float dx;
-            dx = progressWidth * percent;
 
             int radius = width > getHeight() ? getHeight() / 2 : width / 2;
-
+            int progressWidth = width - mPadding * 2;
+            float dx = progressWidth * percent;
             if (dx < getHeight()) {
                 //left circle
                 if (mProgress == 0) {
@@ -455,6 +440,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 }
             } else {
                 //progress line
+
                 RectFloat rectF = new RectFloat(mPadding, mPadding, mPadding
                         + dx, mPadding + progressHeight);
                 canvas.drawRoundRect(rectF, radius, radius, mGradientPaint);
@@ -465,8 +451,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     private void drawProgressCircleOpenGradientleftCircle(Canvas canvas, int width, float percent, int progressHeight) {
-        int progressWidth = width - mPadding * 2 - progressHeight;
-        float dx = progressWidth * percent;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(mProgressColor);
         mProgressPaint.setColor(hmosColor);
         float left = mPadding + progressHeight / 2.0f;
@@ -479,6 +463,8 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
             canvas.drawCircle(left, left, progressHeight / 2.0f, mProgressPaint);
         }
         //right circle
+        int progressWidth = width - mPadding * 2 - progressHeight;
+        float dx = progressWidth * percent;
         if (mProgress == 0) {
             if (mShowZeroPoint) {
                 canvas.drawCircle(left + dx, left, progressHeight / 2.0f, mProgressPaint);
@@ -492,10 +478,10 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 绘制方形进度.
+     * Draw square progress.
      */
-    private void drawProgressRectMode(Canvas canvas) {
 
+    private void drawProgressRectMode(Canvas canvas) {
         int width = getWidth();
         float percent = 0;
         if (mMax != 0) {
@@ -505,8 +491,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
         if (mOpenGradient) {
             drawProgressCircleOpenGradientl(width, percent, progressHeight);
             int progressWidth = width - mPadding * 2;
-            float dx;
-            dx = progressWidth * percent;
+            float dx = progressWidth * percent;
             //progress line
             RectFloat rectF = new RectFloat(mPadding, mPadding, mPadding + dx, mPadding + progressHeight);
             canvas.drawRect(rectF, mGradientPaint);
@@ -567,14 +552,13 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 canvas.drawRect(rectF, mSecondProgressPaint);
             }
         }
-
     }
 
     /**
-     * 绘制圆角矩形进度.
+     * Draw rounded rectangle progress.
      */
-    private void drawProgressRoundRectMode(Canvas canvas) {
 
+    private void drawProgressRoundRectMode(Canvas canvas) {
         int width = getWidth();
         float percent = 0;
         if (mMax != 0) {
@@ -665,14 +649,13 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 canvas.drawRoundRect(rectF, mRadius, mRadius, mSecondProgressPaint);
             }
         }
-
     }
 
     /**
-     * 绘制半圆形背景.
+     * Draw a semicircular background.
      */
-    private void drawBackgroundCircleMode(Canvas canvas) {
 
+    private void drawBackgroundCircleMode(Canvas canvas) {
         int bgHeight = getHeight();
         int width = getWidth();
         //left circle
@@ -685,12 +668,11 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 绘制半圆形边框.
+     * Draw a semicircular border.
      */
+
     private void drawBorderCircleMode(Canvas canvas) {
-
         if (mDrawBorder) {
-
             int bgHeight = getHeight();
             int width = getWidth();
             RectFloat rect = new RectFloat(0, 0, width, bgHeight);
@@ -699,12 +681,11 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 绘制半方形边框.
+     * Draw a half-square border.
      */
+
     private void drawBorderRectMode(Canvas canvas) {
-
         if (mDrawBorder) {
-
             int bgHeight = getHeight();
             int width = getWidth();
             RectFloat rect = new RectFloat(0, 0, width, bgHeight);
@@ -713,10 +694,10 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 绘制圆角矩形边框.
+     * Draw a rounded rectangular border.
      */
-    private void drawBorderRoundRect(Canvas canvas) {
 
+    private void drawBorderRoundRect(Canvas canvas) {
         if (mDrawBorder) {
             int bgHeight = getHeight();
             int width = getWidth();
@@ -727,8 +708,9 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 绘制方形背景.
+     * Draw a square background.
      */
+
     private void drawBackgroundRectMode(Canvas canvas) {
         int bgHeight = getHeight();
         int width = getWidth();
@@ -737,8 +719,9 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 绘制圆角矩形背景.
+     * Draw a rounded rectangular background.
      */
+
     private void drawBackgroundRoundRectMode(Canvas canvas) {
         int bgHeight = getHeight();
         int width = getWidth();
@@ -748,37 +731,40 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取最大值.
+     * Get Maximum.
      *
-     * @return 最大值
+     * @return Maximum
      */
+
     public int getMax() {
         return mMax;
     }
 
     /**
-     * 设置最大值.
+     * Set Maximum.
      *
-     * @param max 最大值
+     * @param max Maximum
      */
+
     public void setMax(int max) {
         this.mMax = max;
         invalidate();
     }
 
     /**
-     * 获取一级进度值.
+     * Get the first level progress value.
      *
-     * @return 进度值
+     * @return progress value
      */
+
     public int getProgress() {
         return mProgress;
     }
 
     /**
-     * 设置一级进度值.
+     * Set the first level progress value.
      *
-     * @param progress 进度值
+     * @param progress progress value
      */
 
     public void setProgress(int progress) {
@@ -797,38 +783,42 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 是否显示二级进度条.
+     * Whether to display secondary progress bar.
      *
-     * @return 是/否
+     * @return Yes/No
      */
+
     public boolean isShowSecondProgress() {
         return mShowSecondProgress;
     }
 
     /**
-     * 设置是否显示二级进度条.
+     * Set whether to display secondary progress bar.
      *
-     * @param showSecondProgress 是/否
+     * @param showSecondProgress Yes/No
      */
+
     public void setShowSecondProgress(boolean showSecondProgress) {
         this.mShowSecondProgress = showSecondProgress;
         invalidate();
     }
 
     /**
-     * 获取二级进度条进度.
+     * Get Level 2 progress bar progress.
      *
-     * @return 进度值
+     * @return progress value
      */
+
     public int getSecondProgress() {
         return mSecondProgress;
     }
 
     /**
-     * 设置二级进度条进度.
+     * Set the secondary progress bar progress.
      *
-     * @param secondProgress 进度值
+     * @param secondProgress progress value
      */
+
     public void setSecondProgress(int secondProgress) {
         if (secondProgress < 0) {
             this.mSecondProgress = 0;
@@ -845,38 +835,42 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取二级进度条形状.
+     * Gets the secondary progress bar shape.
      *
-     * @return 形状，点：{@link #SHAPE_POINT} 线：{@link #SHAPE_LINE}
+     * @return shape, dot:{@link #SHAPE_POINT} line:{@link #SHAPE_LINE}
      */
+
     public int getSecondProgressShape() {
         return mSecondProgressShape;
     }
 
     /**
-     * 设置二级进度条形状.
+     * Sets the secondary progress bar shape.
      *
-     * @param secondProgressShape 形状，点：{@link #SHAPE_POINT} 线：{@link #SHAPE_LINE}
+     * @param secondProgressShape shape, dot:{@link #SHAPE_POINT} line:{@link #SHAPE_LINE}
      */
+
     public void setSecondProgressShape(@SecondProgressShape int secondProgressShape) {
         this.mSecondProgressShape = secondProgressShape;
         invalidate();
     }
 
     /**
-     * 获取背景色.
+     * Get background color.
      *
-     * @return 颜色值
+     * @return color value
      */
+
     public int getBgColor() {
         return mBgColor;
     }
 
     /**
-     * 设置背景色.
+     * Set background color.
      *
-     * @param bgColor 颜色值
+     * @param bgColor color value
      */
+
     public void setBgColor(int bgColor) {
         this.mBgColor = bgColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(bgColor);
@@ -885,19 +879,21 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取二级渐变是否启用.
+     * Gets whether the secondary gradient is enabled.
      *
-     * @return 是/否
+     * @return Yes/No
      */
+
     public boolean isOpenSecondGradient() {
         return mOpenSecondGradient;
     }
 
     /**
-     * 设置二级渐变是否启用.
+     * Sets whether secondary gradients are enabled.
      *
-     * @param openSecondGradient 是/否
+     * @param openSecondGradient Yes/No
      */
+
     public void setOpenSecondGradient(boolean openSecondGradient) {
         this.mOpenSecondGradient = openSecondGradient;
         invalidate();
@@ -912,19 +908,21 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取二级进度条颜色.
+     * Gets the secondary progress bar color.
      *
-     * @return 颜色值
+     * @return color value
      */
+
     public int getSecondProgressColor() {
         return mSecondProgressColor;
     }
 
     /**
-     * 设置二级进度条颜色.
+     * Set secondary progress bar color.
      *
-     * @param secondProgressColor 颜色值
+     * @param secondProgressColor color value
      */
+
     public void setSecondProgressColor(int secondProgressColor) {
         this.mSecondProgressColor = secondProgressColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(secondProgressColor);
@@ -933,19 +931,21 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取一级进度条颜色.
+     * Gets the primary progress bar color.
      *
-     * @return 颜色值
+     * @return color value
      */
+
     public int getProgressColor() {
         return mProgressColor;
     }
 
     /**
-     * 设置一级进度条颜色.
+     * Set the primary progress bar color.
      *
-     * @param progressColor 颜色值
+     * @param progressColor color value
      */
+
     public void setProgressColor(int progressColor) {
         this.mProgressColor = progressColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(progressColor);
@@ -954,29 +954,32 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取内边距.
+     * Gets the inner margin.
      *
-     * @return 边距值
+     * @return margin value
      */
+
     public int getProgressBarPadding() {
         return mPadding;
     }
 
     /**
-     * 设置内边距.
+     * Set the inner margin.
      *
-     * @param padding 边距值
+     * @param padding margin value
      */
+
     public void setPadding(int padding) {
         this.mPadding = padding;
         invalidate();
     }
 
     /**
-     * 设置显示模式.
+     * Set display mode.
      *
-     * @param showMode 显示模式，0：半圆，1：方形，2：圆角矩形
+     * @param showMode display mode，0：Half circle，1：Square，2：rounded rectangle
      */
+
     public void setShowMode(@ShowMode int showMode) {
 
         switch (showMode) {
@@ -990,16 +993,17 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 this.mShowMode = 2;
                 break;
             default:
-                HiLog.debug(hiLogLabel, "default switch case in setShowMode");
+                HiLog.debug(HI_LOG_LABEL, "default switch case in setShowMode");
         }
         invalidate();
     }
 
     /**
-     * 获取进度百分比，int类型.
+     * Get progress percentage, int type.
      *
      * @return percentage value
      */
+
     public int getPercentage() {
         if (mMax == 0) {
             return 0;
@@ -1008,10 +1012,11 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取进度百分比，float类型.
+     * Gets the progress percentage, float type.
      *
      * @return percentage value
      */
+
     public float getPercentageFloat() {
         if (mMax == 0) {
             return 0f;
@@ -1020,19 +1025,21 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 一级渐变色是否启用.
+     * Whether the primary gradient is enabled.
      *
-     * @return 是/否
+     * @return Yes/No
      */
+
     public boolean isOpenGradient() {
         return mOpenGradient;
     }
 
     /**
-     * 设置一级渐变色是否启用.
+     * Sets whether the primary gradient is enabled.
      *
-     * @param openGradient 是/否
+     * @param openGradient Yes/No
      */
+
     public void setOpenGradient(boolean openGradient) {
         this.mOpenGradient = openGradient;
         invalidate();
@@ -1047,10 +1054,11 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 设置边框颜色.
+     * Set border color.
      *
-     * @param borderColor 颜色值
+     * @param borderColor color value
      */
+
     public void setBorderColor(int borderColor) {
         this.mBorderColor = borderColor;
         Color hmosColor = ZzHorizontalProgressBar.changeParamToColor(this.mBorderColor);
@@ -1059,11 +1067,12 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 设置一级进度条的渐变色.
+     * Sets the gradient color of the one level progress bar.
      *
-     * @param from 起始颜色
-     * @param to   结束颜色
+     * @param from start color
+     * @param to   End Color
      */
+
     public void setGradientColor(int from, int to) {
         this.mGradientFrom = from;
         this.mGradientTo = to;
@@ -1071,11 +1080,12 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 设置二级进度条的渐变色.
+     * Sets the gradient color of the secondary progress bar.
      *
-     * @param from 起始颜色
-     * @param to   结束颜色
+     * @param from start color
+     * @param to   End Color
      */
+
     public void setSecondGradientColor(int from, int to) {
         this.mSecondGradientFrom = from;
         this.mSecondGradientTo = to;
@@ -1083,12 +1093,13 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 设置一级进度条的渐变色和边框颜色.
+     * Sets the gradient and border color of the first-level progress bar.
      *
-     * @param from        起始颜色
-     * @param to          结束颜色
-     * @param borderColor 边框颜色
+     * @param from        Start color
+     * @param to          End Color
+     * @param borderColor border color
      */
+
     public void setGradientColorAndBorderColor(int from, int to, int borderColor) {
         this.mGradientFrom = from;
         this.mGradientTo = to;
@@ -1099,19 +1110,21 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
     }
 
     /**
-     * 获取边框颜色.
+     * Get border color.
      *
-     * @return 颜色值
+     * @return color value
      */
+
     public int getBorderColor() {
         return mBorderColor;
     }
 
     /**
-     * 设置进度变化监听（包括一级和二级进度）.
+     * Set up progress change monitoring (both Level 1 and Level 2 progress).
      *
-     * @param onProgressChangedListener 进度值变化回调
+     * @param onProgressChangedListener progress value change callback
      */
+
     public void setOnProgressChangedListener(OnProgressChangedListener onProgressChangedListener) {
         this.mOnProgressChangedListener = onProgressChangedListener;
     }
@@ -1122,6 +1135,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param colors         A color int.
      * @return color
      */
+
     public static Color[] changeParamToColors(int[] colors) {
         Color[] newColors = new Color[colors.length];
         for (int i = 0; i < colors.length; i++) {
@@ -1132,7 +1146,6 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
 
     public static Color changeParamToColor(int color) {
         return new Color(color);
-
     }
 
     /**
@@ -1141,6 +1154,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param mode         A string mode.
      * @return return 0
      */
+
     public int getHandlezpbshowmode(String mode) {
         switch (mode) {
             case "round":
@@ -1150,11 +1164,9 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
             case "round_rect":
                 return 2;
             default:
-                HiLog.debug(hiLogLabel, "default switch case in getHandlezpbshowmode");
+                HiLog.debug(HI_LOG_LABEL, "default switch case in getHandlezpbshowmode");
         }
-
         return 0;
-
     }
 
     /**
@@ -1163,6 +1175,7 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
      * @param mode         String mode.
      * @return return 0
      */
+
     public int getHandlezpbshowssecondpointshape(String mode) {
         if (mode != null) {
             switch (mode) {
@@ -1171,12 +1184,10 @@ public class ZzHorizontalProgressBar extends Component implements DrawTask {
                 case "line":
                     return 1;
                 default:
-                    HiLog.debug(hiLogLabel, "default switch case getHandlezpbshowssecondpointshape");
-
+                    HiLog.debug(HI_LOG_LABEL, "default switch case getHandlezpbshowssecondpointshape");
             }
         }
         return 0;
     }
-
 }
 

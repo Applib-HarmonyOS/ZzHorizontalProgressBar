@@ -23,7 +23,6 @@
           ohos:padding="20vp"
           />
 
-
       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
           ohos:id="$+id:pb1"
           ohos:width="match_parent"
@@ -42,7 +41,6 @@
           custom:zpb_second_progress="0"
           custom:zpb_show_second_point_shape="point"
           custom:zpb_show_second_progress="true"
-
           />
 
       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
@@ -67,7 +65,6 @@
           custom:zpb_show_second_progress="true"
           />
 
-
       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
           ohos:id="$+id:pb3"
           ohos:width="match_parent"
@@ -79,8 +76,6 @@
           custom:zpb_pb_color="#FF4CB862"
           custom:zpb_show_mode="rect"
           />
-
-
 
       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
           ohos:id="$+id:pb4"
@@ -97,10 +92,6 @@
           custom:zpb_second_pb_color="1vp"
           custom:zpb_show_mode="rect"
           />
-
-
-
-
 
       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
           ohos:height="30vp"
@@ -121,7 +112,6 @@
           custom:zpb_round_rect_radius="4vp"
           custom:zpb_show_mode="round_rect"
           />
-
 
       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
           ohos:height="30vp"

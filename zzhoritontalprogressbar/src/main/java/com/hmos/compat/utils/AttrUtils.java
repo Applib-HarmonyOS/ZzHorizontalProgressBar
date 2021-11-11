@@ -24,11 +24,13 @@ import ohos.hiviewdfx.HiLogLabel;
 /**
  * AttrUtils class.
  */
+
 public class AttrUtils {
-    private static HiLogLabel hiLogLabel = new HiLogLabel(0, 0, "attrutils");
+    private static final HiLogLabel HI_LOG_LABEL = new HiLogLabel(0, 0, "attrutils");
 
     private AttrUtils() {
     }
+
     /**
      * Function to get int value from attribute.
      *
@@ -45,11 +47,12 @@ public class AttrUtils {
                 value = attrs.getAttr(name).get().getIntegerValue();
             }
 
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getIntFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getIntFromAttr exception");
         }
         return value;
     }
+
     /**
      * Function to get float value from attribute.
      *
@@ -66,11 +69,12 @@ public class AttrUtils {
             if (attrs.getAttr(name).isPresent() && attrs.getAttr(name).get() != null) {
                 value = attrs.getAttr(name).get().getFloatValue();
             }
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getFloatFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getFloatFromAttr exception");
         }
         return value;
     }
+
     /**
      * Function to get boolean value from attribute.
      *
@@ -87,11 +91,12 @@ public class AttrUtils {
             if (attrs.getAttr(name).isPresent() && attrs.getAttr(name).get() != null) {
                 value = attrs.getAttr(name).get().getBoolValue();
             }
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getBooleanFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getBooleanFromAttr exception");
         }
         return value;
     }
+
     /**
      * Function to get Long value from attribute.
      *
@@ -108,11 +113,12 @@ public class AttrUtils {
             if (attrs.getAttr(name).isPresent() && attrs.getAttr(name).get() != null) {
                 value = attrs.getAttr(name).get().getLongValue();
             }
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getLongFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getLongFromAttr exception");
         }
         return value;
     }
+
     /**
      * Function to get Color value from attribute.
      *
@@ -129,11 +135,12 @@ public class AttrUtils {
             if (attrs.getAttr(name).isPresent() && attrs.getAttr(name).get() != null) {
                 value = attrs.getAttr(name).get().getColorValue().getValue();
             }
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getColorFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getColorFromAttr exception");
         }
         return value;
     }
+
     /**
      * Function to get Dimension value from attribute.
      *
@@ -150,11 +157,12 @@ public class AttrUtils {
             if (attrs.getAttr(name).isPresent() && attrs.getAttr(name).get() != null) {
                 value = attrs.getAttr(name).get().getDimensionValue();
             }
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getDimensionFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getDimensionFromAttr exception");
         }
         return value;
     }
+
     /**
      * Function to get string value from attribute.
      *
@@ -171,11 +179,12 @@ public class AttrUtils {
             if (attrs.getAttr(name).isPresent() && attrs.getAttr(name).get() != null) {
                 value = attrs.getAttr(name).get().getStringValue();
             }
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getStringFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getStringFromAttr exception");
         }
         return value;
     }
+
     /**
      * Function to get Element value from attribute.
      *
@@ -191,8 +200,8 @@ public class AttrUtils {
             if (attrs.getAttr(name).isPresent() && attrs.getAttr(name).get() != null) {
                 value = attrs.getAttr(name).get().getElement();
             }
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "getElementFromAttr exception");
+        } catch (Exception exception) {
+            HiLog.error(HI_LOG_LABEL, "getElementFromAttr exception");
         }
         return value;
     }

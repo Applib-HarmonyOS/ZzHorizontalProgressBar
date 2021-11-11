@@ -29,6 +29,7 @@ import me.zhouzhuo.zzhorizontalprogressbardemo.ResourceTable;
 /**
  * MainAbilitySlice.
  */
+
 public class MainAbilitySlice extends AbilitySlice {
     private final HiLogLabel hiLogLabel = new HiLogLabel(0, 0, "ZzHorizontalProgressBar");
 
@@ -69,8 +70,8 @@ public class MainAbilitySlice extends AbilitySlice {
                         pb3.setProgressColor(0xffff0000);
                         pb5.setGradientColorAndBorderColor(0x7fb4ec51, 0x7f429321, 0xff85ff00);
                     }
-                } catch (Exception e) {
-                    HiLog.debug(hiLogLabel, "onProgressUpdated null pointer exception");
+                } catch (Exception exception) {
+                    HiLog.error(hiLogLabel, "onProgressUpdated null pointer exception");
                 }
             }
 
@@ -98,8 +99,8 @@ public class MainAbilitySlice extends AbilitySlice {
                     //this method is empty
                 }
             });
-        } catch (Exception e) {
-            HiLog.debug(hiLogLabel, "setOnProgressChangedListener exception");
+        } catch (Exception exception) {
+            HiLog.error(hiLogLabel, "setOnProgressChangedListener exception");
         }
     }
 
@@ -110,7 +111,6 @@ public class MainAbilitySlice extends AbilitySlice {
 
     @Override
     public void onForeground(Intent intent) {
-
         super.onForeground(intent);
     }
 }
