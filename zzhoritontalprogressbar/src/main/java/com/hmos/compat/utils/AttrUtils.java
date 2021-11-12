@@ -156,6 +156,7 @@ public class AttrUtils {
         }
         return value;
     }
+    
     /**
      * Function to get string value from attribute.
      *
