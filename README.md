@@ -1,57 +1,70 @@
 # ZzHorizontalProgressBar
 
-一个高度自定义的水平进度条控件.
+A highly customized horizontal progress bar control.
 
-Github地址:https://github.com/zhouzhuo810/ZzHorizontalProgressBar
+## Source
 
-**功能简介**：
-- 1.支持自定义进度颜色；
-- 2.支持自定义背景颜色；
-- 3.支持自定义背景与进度之间的内间距大小；
-- 4.支持自定义最大值和默认进度值；
-- 5.支持渐变颜色进度；
-- 6.支持二级进度条。
+Inspired by [zhouzhuo810/ZzHorizontalProgressBar](https://github.com/zhouzhuo810/ZzHorizontalProgressBar)  version v1.1.1 
 
-**与系统控件相比的优势**：属性配置更简单、大小适配更方便。
+## Features
 
-Gradle:
+1. Support custom progress color;
+2. Support custom background color;
+3. Support the user-defined background and progress of the internal spacing size;
+4. Support custom maximum and default progress value;
+5. Support for gradient color progress;
+6. Support for the second-level progress bar.
+
+
+![progressbar_gif](https://github.com/vidyaakbar/ZzHorizontalProgressBar/blob/main/screenshots/zzhorizontalprogressbar.gif)
+
+
+## Dependency
+
+1.For using ZzHorizontalProgressBar module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
+
 
 ```
-    allprojects {
-        repositories {
-            ...
-            maven { url 'https://jitpack.io' }
-        }
-    }
+    
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
+    testImplementation 'junit:junit:4.13'
+    ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
+    implementation project(':zzhoritontalprogressbar')
+}
 ```
 
+2.For using ZzHorizontalProgressBar in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
 ```
-    implementation 'com.github.zhouzhuo810:ZzHorizontalProgressBar:1.1.1'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13'
+}
 ```
 
 
-<h3>What does it look like？</h3>
-
-![这里写图片描述](https://github.com/zhouzhuo810/ZzHorizontalProgressBar/blob/master/zzhorizontalprogressbar.gif)
 
 
-
-<h3>How to use it ?</h3>
+<h3>Usage</h3>
 
 1.xml
 
-
 ```
-    <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
-        android:id="@+id/pb"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:zpb_padding="0dp"
-        app:zpb_pb_color="@android:color/holo_green_dark"
-        app:zpb_bg_color="@android:color/holo_blue_bright"
-        app:zpb_max="100"
-        app:zpb_progress="30"
-        />
+       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+              ohos:id="$+id:pb4"
+              ohos:height="40vp"
+              ohos:width="match_parent"
+              ohos:left_margin="20vp"
+              ohos:top_margin="20vp"
+              ohos:right_margin="20vp"
+              custom:zpb_bg_color="#dbdbdb"
+              custom:zpb_gradient_from="#419120"
+              custom:zpb_gradient_to="#b3eb50"
+              custom:zpb_max="100"
+              custom:zpb_open_gradient="true"
+              custom:zpb_padding="1vp"
+              custom:zpb_show_mode="rect"
+              />
 
 ```
 
@@ -59,105 +72,50 @@ Gradle:
 
 
 ```java
-        final ZzHorizontalProgressBar pb = (ZzHorizontalProgressBar) findViewById(R.id.pb);
+        final ZzHorizontalProgressBar pb4 = (ZzHorizontalProgressBar) findComponentById(ResourceTable.Id_pb4);
 
 		//set progress value
-        pb.setProgress(progress);
-
-		//set padding
-        pb.setPadding(0);		
+        pb4.setProgress(progress);
 
 		//set background color
-        pb.setBgColor(Color.RED);
+        pb4.setBgColor(Color.RED);
 
 		//set progress color
-        pb.setProgressColor(Color.BLUE);
+        pb4.setProgressColor(Color.BLUE);
 
 		//set max value
-        pb.setMax(100);		
+        pb4.setMax(100);		
 ```
 
 </br>
-<h3>属性说明：</h3>
 
-|属性|作用|类型|
+<h3>Property description:
+</h3>
+
+|Properties|Action|Type|
 | --- | ---|---|
-|zpb_padding|背景与进度之间的内间距大小|dimension|
-|zpb_second_pb_color |二级进度背景颜色|color|
-|zpb_bg_color |背景颜色|color|
-|zpb_pb_color |进度颜色|color|
-|zpb_max |进度最大值|int|
-|zpb_progress |默认进度值|int|
-|zpb_second_progress |二级进度默认进度值|int|
-|zpb_open_gradient|是否使用渐变色|boolean|
-|zpb_show_zero_point|进度为0时是否显示圆点|boolean|
-|zpb_gradient_from|开始渐变颜色|color|
-|zpb_gradient_to|结束渐变颜色|color|
-|zpb_show_second_progress|二级进度是否显示|boolean|
-|zpb_open_second_gradient|二级进度是否使用渐变色|boolean|
-|zpb_second_gradient_from|二级进度开始渐变颜色|color|
-|zpb_second_gradient_to|二级进度结束渐变颜色|color|
-|zpb_show_second_point_shape|二级进度形状（point,line）|enum|
-|zpb_show_mode|显示进度的模式(round,rect,round_rect)|enum|
-|zpb_round_rect_radius|round_rect模式下圆角的半径|dimension|
-|zpb_draw_border|是否画边框|boolean|
-|zpb_border_width|边框的线宽|dimension|
-|zpb_border_color|边框的颜色|color|
+|zpb_padding|The size of the inner space between the background and progress|dimension|
+|zpb_second_pb_color |Secondary progress background color|color|
+|zpb_bg_color |Background Color|color|
+|zpb_pb_color |progress color|color|
+|zpb_max |Progress Maximum|int|
+|zpb_progress |Default progress value|int|
+|zpb_second_progress |Secondary progress default progress value|int|
+|zpb_open_gradient|Whether to use gradient colors|boolean|
+|zpb_gradient_from|Start Gradient Color|color|
+|zpb_gradient_to|End gradient color|color|
+|zpb_show_second_progress|Is the secondary progress shown|boolean|
+|zpb_open_second_gradient|Whether secondary progress uses gradient colors|boolean|
+|zpb_second_gradient_from|Secondary Progress Start Gradient Color|color|
+|zpb_second_gradient_to|Secondary Progress End Gradient Color|color|
+|zpb_show_second_point_shape|secondary progress shape（point,line）|int|
+|zpb_show_mode|Mode to Display Progress (round,rect,round_rect)|int|
+|zpb_round_rect_radius|round_rect Radius of the filet in mode|dimension|
+|zpb_draw_border|Do I draw a border|boolean|
+|zpb_border_width|The line width of the border|dimension|
+|zpb_border_color|Color of the border|color|
 
-### Fix Records
 
-#### v1.1.1
-
-- 修复二级进度值为0时也显示一条线的问题；
-- 添加了文档注释；
-
-#### v1.1.0
-
-- zpb_show_zero_point属性，控制进度为0时是否显示圆点；
-
-#### v1.0.9
-
-- 修复二级进度条单一色时进度设置无效问题；
-
-#### v1.0.8
-
-- 修复二级进度条单一色时颜色设置无效问题；
-
-#### v1.0.7
-
-- 修复圆角进度算法缺陷；
-
-#### v1.0.6
-
-- 添加动态设置边框颜色方法；
-
-#### v1.0.5
-
-- 添加自定义圆角大小模式；
-- 添加zpb_show_mode属性，切换模式；
-- 添加zpb_round_rect_radius属性，圆角半径；
-- 添加zpb_draw_border属性，是否画边框；
-- 添加zpb_border_width属性，边框宽度；
-- 添加zpb_border_color属性，边框颜色；
-
-#### v1.0.4
-
-- 添加矩形进度模式;
-- 添加`setOnProgressChangedListener`回调方法；
-
-#### v1.0.3
-
-- 添加二级进度；
-- 添加二级进度渐变；
-- 添加二级进度形状；
-
-#### v1.0.2
-
-- 添加渐变色属性；
-
-#### v1.0.1
-
-- 修复动态修改背景颜色和进度颜色无效问题；
 
 ### License
 

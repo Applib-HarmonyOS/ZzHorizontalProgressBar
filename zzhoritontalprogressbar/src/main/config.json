@@ -1,0 +1,25 @@
+{
+  "app": {
+    "bundleName": "me.zhouzhuo.zzhorizontalprogressbardemo",
+    "vendor": "zhouzhuo",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {
+  },
+  "module": {
+    "package": "me.zhouzhuo.zzhoritontalprogressbar",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "zzhoritontalprogressbar",
+      "moduleType": "har"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "app": {
+    "bundleName": "me.zhouzhuo.zzhorizontalprogressbardemo",
+    "vendor": "zhouzhuo",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "me.zhouzhuo.zzhorizontalprogressbardemo",
+    "name": ".MyApplication",
+    "mainAbility": "me.zhouzhuo.zzhorizontalprogressbardemo.MainAbility",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "me.zhouzhuo.zzhorizontalprogressbardemo.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}
