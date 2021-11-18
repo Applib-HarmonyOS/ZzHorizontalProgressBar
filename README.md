@@ -2,7 +2,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=applibgroup_ZzHorizontalProgressBar&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=applibgroup_ZzHorizontalProgressBar)
 # ZzHorizontalProgressBar
 
-A highly customized horizontal progress bar control.
+This is HMOS library which is highly customized horizontal progress bar control.
 
 ## Source
 
