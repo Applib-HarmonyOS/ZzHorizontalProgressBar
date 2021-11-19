@@ -16,7 +16,7 @@
 
 package me.zhouzhuo.zzhorizontalprogressbardemo;
 
-import me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar;
+import me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar;
 import ohos.aafwk.ability.delegation.AbilityDelegatorRegistry;
 import ohos.agp.components.Attr;
 import ohos.agp.components.AttrSet;

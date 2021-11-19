@@ -10,7 +10,7 @@
   "deviceConfig": {
   },
   "module": {
-    "package": "me.zhouzhuo.zzhoritontalprogressbar",
+    "package": "me.zhouzhuo.zzhorizontalprogressbar",
     "deviceType": [
       "phone",
       "tablet",
@@ -18,7 +18,7 @@
     ],
     "distro": {
       "deliveryWithInstall": true,
-      "moduleName": "zzhoritontalprogressbar",
+      "moduleName": "zzhorizontalprogressbar",
       "moduleType": "har"
     }
   }

@@ -22,7 +22,7 @@ import ohos.agp.components.Slider;
 import ohos.agp.components.Text;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
-import me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar;
+import me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar;
 import me.zhouzhuo.zzhorizontalprogressbardemo.ResourceTable;
 
 
