@@ -30,7 +30,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
     testImplementation 'junit:junit:4.13'
     ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
-    implementation project(':zzhoritontalprogressbar')
+    implementation project(':zzhorizontalprogressbar')
 }
 ```
 
@@ -50,7 +50,7 @@ dependencies {
 1.xml
 
 ```
-       <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+       <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
               ohos:id="$+id:pb4"
               ohos:height="40vp"
               ohos:width="match_parent"
