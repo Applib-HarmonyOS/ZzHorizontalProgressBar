@@ -13,7 +13,7 @@
        ohos:id="$+id:activity_main"
        ohos:orientation="vertical">
 
-      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+      <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
           ohos:height="60vp"
           ohos:width="match_parent"
           ohos:id="$+id:pb"
@@ -23,7 +23,7 @@
           ohos:padding="20vp"
           />
 
-      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+      <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
           ohos:id="$+id:pb1"
           ohos:width="match_parent"
           ohos:height="10vp"
@@ -43,7 +43,7 @@
           custom:zpb_show_second_progress="true"
           />
 
-      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+      <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
           ohos:id="$+id:pb2"
           ohos:width="match_parent"
           ohos:height="30vp"
@@ -65,7 +65,7 @@
           custom:zpb_show_second_progress="true"
           />
 
-      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+      <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
           ohos:id="$+id:pb3"
           ohos:width="match_parent"
           ohos:height="30vp"
@@ -77,7 +77,7 @@
           custom:zpb_show_mode="rect"
           />
 
-      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+      <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
           ohos:id="$+id:pb4"
           ohos:height="40vp"
           ohos:width="match_parent"
@@ -93,7 +93,7 @@
           custom:zpb_show_mode="rect"
           />
 
-      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+      <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
           ohos:height="30vp"
           ohos:width="match_parent"
           ohos:id="$+id:pb5"
@@ -113,7 +113,7 @@
           custom:zpb_show_mode="round_rect"
           />
 
-      <me.zhouzhuo.zzhoritontalprogressbar.ZzHorizontalProgressBar
+      <me.zhouzhuo.zzhorizontalprogressbar.ZzHorizontalProgressBar
           ohos:height="30vp"
           ohos:width="match_parent"
           ohos:id="$+id:pb6"

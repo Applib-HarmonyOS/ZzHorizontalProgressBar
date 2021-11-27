@@ -1,4 +1,4 @@
-package me.zhouzhuo.zzhoritontalprogressbar;
+package me.zhouzhuo.zzhorizontalprogressbar;
 
 import ohos.agp.components.AttrSet;
 import ohos.agp.components.Component;
