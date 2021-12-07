@@ -18,8 +18,7 @@ Inspired by [zhouzhuo810/ZzHorizontalProgressBar](https://github.com/zhouzhuo810
 6. Support for the second-level progress bar.
 
 
-![progressbar_gif](https://github.com/vidyaakbar/ZzHorizontalProgressBar/blob/main/screenshots/zzhorizontalprogressbar.gif)
-
+![](screenshots/zzhorizontalprogressbar.gif)
 
 ## Dependency
 
@@ -29,19 +28,27 @@ Inspired by [zhouzhuo810/ZzHorizontalProgressBar](https://github.com/zhouzhuo810
 ```
     
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
-    testImplementation 'junit:junit:4.13'
-    ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
-    implementation project(':zzhorizontalprogressbar')
-}
+            implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
+            testImplementation 'junit:junit:4.13'
+            ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
+            implementation project(':zzhorizontalprogressbar')
+    }
 ```
 
 2.For using ZzHorizontalProgressBar in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
 ```
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.13'
-}
+            implementation fileTree(dir: 'libs', include: ['*.jar'])
+            testImplementation 'junit:junit:4.13'
+    }
+```
+
+3. For using ZzHorizontalProgressBar from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+``` groovy
+dependencies {
+	    implementation 'dev.applibgroup:zzhorizontalprogressbar:1.0.0'
+	    testCompile 'junit:junit:4.13'
+    }
 ```
 
 
